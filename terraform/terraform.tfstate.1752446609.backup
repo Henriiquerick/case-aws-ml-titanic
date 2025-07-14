@@ -1,10 +1,43 @@
 {
   "version": 4,
   "terraform_version": "1.12.2",
-  "serial": 120,
+  "serial": 80,
   "lineage": "d521b1e8-e3b9-860d-cd4d-0d7cfd654b3a",
   "outputs": {},
   "resources": [
+    {
+      "mode": "data",
+      "type": "archive_file",
+      "name": "lambda_zip",
+      "provider": "provider[\"registry.terraform.io/hashicorp/archive\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "exclude_symlink_directories": null,
+            "excludes": null,
+            "id": "06428a071712d6ecc842a57032e6b3ca07237d11",
+            "output_base64sha256": "JhVin2giYT4Ghu4cf0I36yigcpzo/vT1AL0aWAjF0Og=",
+            "output_base64sha512": "PZCzfBjHiRdRLRM8xQk/tPBbKovs9VDx3XxCM7AKzP7ezr/WhrAQtDnoBEqQe/TluB4LWxtPRIA2W6g22Zi8MA==",
+            "output_file_mode": null,
+            "output_md5": "833279eb3d60ab49bcef94f01bf51902",
+            "output_path": "../lambda/lambda_function.zip",
+            "output_sha": "06428a071712d6ecc842a57032e6b3ca07237d11",
+            "output_sha256": "2615629f6822613e0686ee1c7f4237eb28a0729ce8fef4f500bd1a5808c5d0e8",
+            "output_sha512": "3d90b37c18c78917512d133cc5093fb4f05b2a8becf550f1dd7c4233b00accfedecebfd686b010b439e8044a907bf4e5b81e0b5b1b4f4480365ba836d998bc30",
+            "output_size": 89719,
+            "source": [],
+            "source_content": null,
+            "source_content_filename": null,
+            "source_dir": "../lambda/",
+            "source_file": null,
+            "type": "zip"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0
+        }
+      ]
+    },
     {
       "mode": "managed",
       "type": "aws_api_gateway_account",
@@ -39,51 +72,6 @@
     },
     {
       "mode": "managed",
-      "type": "aws_api_gateway_deployment",
-      "name": "titanic_api_deployment",
-      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
-      "instances": [
-        {
-          "schema_version": 0,
-          "attributes": {
-            "created_date": "2025-07-13T23:09:15Z",
-            "description": "",
-            "id": "ppisun",
-            "region": "sa-east-1",
-            "rest_api_id": "7kgcdqcq29",
-            "triggers": {
-              "api_method_integration_hash": "a952ed1cfd1356a2bdb86aaa1db500d1413b3515",
-              "manual_deploy_trigger": "v4"
-            },
-            "variables": null
-          },
-          "sensitive_attributes": [],
-          "identity_schema_version": 0,
-          "private": "bnVsbA==",
-          "dependencies": [
-            "aws_api_gateway_integration.delete_sobreviventes_id_integration",
-            "aws_api_gateway_integration.get_sobreviventes_id_integration",
-            "aws_api_gateway_integration.get_sobreviventes_integration",
-            "aws_api_gateway_integration.post_sobreviventes_integration",
-            "aws_api_gateway_method.delete_sobreviventes_id",
-            "aws_api_gateway_method.get_sobreviventes",
-            "aws_api_gateway_method.get_sobreviventes_id",
-            "aws_api_gateway_method.post_sobreviventes",
-            "aws_api_gateway_resource.sobreviventes_id_resource",
-            "aws_api_gateway_resource.sobreviventes_resource",
-            "aws_api_gateway_rest_api.titanic_api",
-            "aws_iam_role.lambda_exec_role",
-            "aws_lambda_function.titanic_survivors_lambda",
-            "aws_s3_bucket.lambda_code_bucket",
-            "data.archive_file.lambda_zip",
-            "random_string.bucket_suffix"
-          ],
-          "create_before_destroy": true
-        }
-      ]
-    },
-    {
-      "mode": "managed",
       "type": "aws_api_gateway_integration",
       "name": "delete_sobreviventes_id_integration",
       "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
@@ -92,20 +80,20 @@
           "schema_version": 0,
           "attributes": {
             "cache_key_parameters": [],
-            "cache_namespace": "io6fws",
+            "cache_namespace": "pwlmbw",
             "connection_id": "",
             "connection_type": "INTERNET",
             "content_handling": "",
             "credentials": "",
             "http_method": "DELETE",
-            "id": "agi-7kgcdqcq29-io6fws-DELETE",
+            "id": "agi-gco5ep699d-pwlmbw-DELETE",
             "integration_http_method": "POST",
             "passthrough_behavior": "WHEN_NO_MATCH",
             "region": "sa-east-1",
             "request_parameters": {},
             "request_templates": {},
-            "resource_id": "io6fws",
-            "rest_api_id": "7kgcdqcq29",
+            "resource_id": "pwlmbw",
+            "rest_api_id": "gco5ep699d",
             "timeout_milliseconds": 29000,
             "tls_config": [],
             "type": "AWS_PROXY",
@@ -121,144 +109,7 @@
             "aws_api_gateway_rest_api.titanic_api",
             "aws_iam_role.lambda_exec_role",
             "aws_lambda_function.titanic_survivors_lambda",
-            "aws_s3_bucket.lambda_code_bucket",
-            "random_string.bucket_suffix"
-          ],
-          "create_before_destroy": true
-        }
-      ]
-    },
-    {
-      "mode": "managed",
-      "type": "aws_api_gateway_integration",
-      "name": "get_sobreviventes_id_integration",
-      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
-      "instances": [
-        {
-          "schema_version": 0,
-          "attributes": {
-            "cache_key_parameters": [],
-            "cache_namespace": "io6fws",
-            "connection_id": "",
-            "connection_type": "INTERNET",
-            "content_handling": "",
-            "credentials": "",
-            "http_method": "GET",
-            "id": "agi-7kgcdqcq29-io6fws-GET",
-            "integration_http_method": "POST",
-            "passthrough_behavior": "WHEN_NO_MATCH",
-            "region": "sa-east-1",
-            "request_parameters": {},
-            "request_templates": {},
-            "resource_id": "io6fws",
-            "rest_api_id": "7kgcdqcq29",
-            "timeout_milliseconds": 29000,
-            "tls_config": [],
-            "type": "AWS_PROXY",
-            "uri": "arn:aws:apigateway:sa-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:sa-east-1:654291821970:function:TitanicSurvivorsLambda/invocations"
-          },
-          "sensitive_attributes": [],
-          "identity_schema_version": 0,
-          "private": "bnVsbA==",
-          "dependencies": [
-            "aws_api_gateway_method.get_sobreviventes_id",
-            "aws_api_gateway_resource.sobreviventes_id_resource",
-            "aws_api_gateway_resource.sobreviventes_resource",
-            "aws_api_gateway_rest_api.titanic_api",
-            "aws_iam_role.lambda_exec_role",
-            "aws_lambda_function.titanic_survivors_lambda",
-            "aws_s3_bucket.lambda_code_bucket",
-            "random_string.bucket_suffix"
-          ],
-          "create_before_destroy": true
-        }
-      ]
-    },
-    {
-      "mode": "managed",
-      "type": "aws_api_gateway_integration",
-      "name": "get_sobreviventes_integration",
-      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
-      "instances": [
-        {
-          "schema_version": 0,
-          "attributes": {
-            "cache_key_parameters": [],
-            "cache_namespace": "r3p90b",
-            "connection_id": "",
-            "connection_type": "INTERNET",
-            "content_handling": "",
-            "credentials": "",
-            "http_method": "GET",
-            "id": "agi-7kgcdqcq29-r3p90b-GET",
-            "integration_http_method": "POST",
-            "passthrough_behavior": "WHEN_NO_MATCH",
-            "region": "sa-east-1",
-            "request_parameters": {},
-            "request_templates": {},
-            "resource_id": "r3p90b",
-            "rest_api_id": "7kgcdqcq29",
-            "timeout_milliseconds": 29000,
-            "tls_config": [],
-            "type": "AWS_PROXY",
-            "uri": "arn:aws:apigateway:sa-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:sa-east-1:654291821970:function:TitanicSurvivorsLambda/invocations"
-          },
-          "sensitive_attributes": [],
-          "identity_schema_version": 0,
-          "private": "bnVsbA==",
-          "dependencies": [
-            "aws_api_gateway_method.get_sobreviventes",
-            "aws_api_gateway_resource.sobreviventes_resource",
-            "aws_api_gateway_rest_api.titanic_api",
-            "aws_iam_role.lambda_exec_role",
-            "aws_lambda_function.titanic_survivors_lambda",
-            "aws_s3_bucket.lambda_code_bucket",
-            "random_string.bucket_suffix"
-          ],
-          "create_before_destroy": true
-        }
-      ]
-    },
-    {
-      "mode": "managed",
-      "type": "aws_api_gateway_integration",
-      "name": "post_sobreviventes_integration",
-      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
-      "instances": [
-        {
-          "schema_version": 0,
-          "attributes": {
-            "cache_key_parameters": [],
-            "cache_namespace": "r3p90b",
-            "connection_id": "",
-            "connection_type": "INTERNET",
-            "content_handling": "",
-            "credentials": "",
-            "http_method": "POST",
-            "id": "agi-7kgcdqcq29-r3p90b-POST",
-            "integration_http_method": "POST",
-            "passthrough_behavior": "WHEN_NO_MATCH",
-            "region": "sa-east-1",
-            "request_parameters": {},
-            "request_templates": {},
-            "resource_id": "r3p90b",
-            "rest_api_id": "7kgcdqcq29",
-            "timeout_milliseconds": 29000,
-            "tls_config": [],
-            "type": "AWS_PROXY",
-            "uri": "arn:aws:apigateway:sa-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:sa-east-1:654291821970:function:TitanicSurvivorsLambda/invocations"
-          },
-          "sensitive_attributes": [],
-          "identity_schema_version": 0,
-          "private": "bnVsbA==",
-          "dependencies": [
-            "aws_api_gateway_method.post_sobreviventes",
-            "aws_api_gateway_resource.sobreviventes_resource",
-            "aws_api_gateway_rest_api.titanic_api",
-            "aws_iam_role.lambda_exec_role",
-            "aws_lambda_function.titanic_survivors_lambda",
-            "aws_s3_bucket.lambda_code_bucket",
-            "random_string.bucket_suffix"
+            "data.archive_file.lambda_zip"
           ],
           "create_before_destroy": true
         }
@@ -278,14 +129,14 @@
             "authorization_scopes": [],
             "authorizer_id": "",
             "http_method": "DELETE",
-            "id": "agm-7kgcdqcq29-io6fws-DELETE",
+            "id": "agm-gco5ep699d-pwlmbw-DELETE",
             "operation_name": "",
             "region": "sa-east-1",
             "request_models": {},
             "request_parameters": {},
             "request_validator_id": "",
-            "resource_id": "io6fws",
-            "rest_api_id": "7kgcdqcq29"
+            "resource_id": "pwlmbw",
+            "rest_api_id": "gco5ep699d"
           },
           "sensitive_attributes": [],
           "identity_schema_version": 0,
@@ -313,14 +164,14 @@
             "authorization_scopes": [],
             "authorizer_id": "",
             "http_method": "GET",
-            "id": "agm-7kgcdqcq29-r3p90b-GET",
+            "id": "agm-gco5ep699d-rbwtop-GET",
             "operation_name": "",
             "region": "sa-east-1",
             "request_models": {},
             "request_parameters": {},
             "request_validator_id": "",
-            "resource_id": "r3p90b",
-            "rest_api_id": "7kgcdqcq29"
+            "resource_id": "rbwtop",
+            "rest_api_id": "gco5ep699d"
           },
           "sensitive_attributes": [],
           "identity_schema_version": 0,
@@ -347,14 +198,14 @@
             "authorization_scopes": [],
             "authorizer_id": "",
             "http_method": "GET",
-            "id": "agm-7kgcdqcq29-io6fws-GET",
+            "id": "agm-gco5ep699d-pwlmbw-GET",
             "operation_name": "",
             "region": "sa-east-1",
             "request_models": {},
             "request_parameters": {},
             "request_validator_id": "",
-            "resource_id": "io6fws",
-            "rest_api_id": "7kgcdqcq29"
+            "resource_id": "pwlmbw",
+            "rest_api_id": "gco5ep699d"
           },
           "sensitive_attributes": [],
           "identity_schema_version": 0,
@@ -382,14 +233,14 @@
             "authorization_scopes": [],
             "authorizer_id": "",
             "http_method": "POST",
-            "id": "agm-7kgcdqcq29-r3p90b-POST",
+            "id": "agm-gco5ep699d-rbwtop-POST",
             "operation_name": "",
             "region": "sa-east-1",
             "request_models": {},
             "request_parameters": {},
             "request_validator_id": "",
-            "resource_id": "r3p90b",
-            "rest_api_id": "7kgcdqcq29"
+            "resource_id": "rbwtop",
+            "rest_api_id": "gco5ep699d"
           },
           "sensitive_attributes": [],
           "identity_schema_version": 0,
@@ -411,12 +262,12 @@
         {
           "schema_version": 0,
           "attributes": {
-            "id": "io6fws",
-            "parent_id": "r3p90b",
+            "id": "pwlmbw",
+            "parent_id": "rbwtop",
             "path": "/sobreviventes/{id}",
             "path_part": "{id}",
             "region": "sa-east-1",
-            "rest_api_id": "7kgcdqcq29"
+            "rest_api_id": "gco5ep699d"
           },
           "sensitive_attributes": [],
           "identity_schema_version": 0,
@@ -438,12 +289,12 @@
         {
           "schema_version": 0,
           "attributes": {
-            "id": "r3p90b",
-            "parent_id": "ppnt5woge4",
+            "id": "rbwtop",
+            "parent_id": "h4uih6m5of",
             "path": "/sobreviventes",
             "path_part": "sobreviventes",
             "region": "sa-east-1",
-            "rest_api_id": "7kgcdqcq29"
+            "rest_api_id": "gco5ep699d"
           },
           "sensitive_attributes": [],
           "identity_schema_version": 0,
@@ -465,10 +316,10 @@
           "schema_version": 0,
           "attributes": {
             "api_key_source": "HEADER",
-            "arn": "arn:aws:apigateway:sa-east-1::/restapis/7kgcdqcq29",
+            "arn": "arn:aws:apigateway:sa-east-1::/restapis/gco5ep699d",
             "binary_media_types": [],
             "body": null,
-            "created_date": "2025-07-13T22:46:02Z",
+            "created_date": "2025-07-13T19:58:44Z",
             "description": "API para prever sobreviventes do Titanic",
             "disable_execute_api_endpoint": false,
             "endpoint_configuration": [
@@ -480,16 +331,16 @@
                 "vpc_endpoint_ids": []
               }
             ],
-            "execution_arn": "arn:aws:execute-api:sa-east-1:654291821970:7kgcdqcq29",
+            "execution_arn": "arn:aws:execute-api:sa-east-1:654291821970:gco5ep699d",
             "fail_on_warnings": null,
-            "id": "7kgcdqcq29",
+            "id": "gco5ep699d",
             "minimum_compression_size": "",
             "name": "TitanicSurvivorsAPI",
             "parameters": null,
             "policy": "",
             "put_rest_api_mode": null,
             "region": "sa-east-1",
-            "root_resource_id": "ppnt5woge4",
+            "root_resource_id": "h4uih6m5of",
             "tags": {
               "Environment": "Dev",
               "Project": "TitanicCase"
@@ -503,70 +354,6 @@
           "identity_schema_version": 0,
           "private": "bnVsbA==",
           "create_before_destroy": true
-        }
-      ]
-    },
-    {
-      "mode": "managed",
-      "type": "aws_api_gateway_stage",
-      "name": "titanic_api_stage",
-      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
-      "instances": [
-        {
-          "schema_version": 0,
-          "attributes": {
-            "access_log_settings": [
-              {
-                "destination_arn": "arn:aws:logs:sa-east-1:654291821970:log-group:/aws/apigateway/TitanicSurvivorsAPI/dev",
-                "format": "{\"caller\":\"$context.identity.caller\",\"httpMethod\":\"$context.httpMethod\",\"ip\":\"$context.identity.sourceIp\",\"protocol\":\"$context.protocol\",\"requestId\":\"$context.requestId\",\"requestTime\":\"$context.requestTime\",\"resourcePath\":\"$context.resourcePath\",\"responseLength\":\"$context.responseLength\",\"status\":\"$context.status\",\"user\":\"$context.identity.user\"}"
-              }
-            ],
-            "arn": "arn:aws:apigateway:sa-east-1::/restapis/7kgcdqcq29/stages/dev",
-            "cache_cluster_enabled": false,
-            "cache_cluster_size": "0.5",
-            "canary_settings": [],
-            "client_certificate_id": "",
-            "deployment_id": "ppisun",
-            "description": "",
-            "documentation_version": "",
-            "execution_arn": "arn:aws:execute-api:sa-east-1:654291821970:7kgcdqcq29/dev",
-            "id": "ags-7kgcdqcq29-dev",
-            "invoke_url": "https://7kgcdqcq29.execute-api.sa-east-1.amazonaws.com/dev",
-            "region": "sa-east-1",
-            "rest_api_id": "7kgcdqcq29",
-            "stage_name": "dev",
-            "tags": {},
-            "tags_all": {},
-            "variables": {},
-            "web_acl_arn": "",
-            "xray_tracing_enabled": false
-          },
-          "sensitive_attributes": [],
-          "identity_schema_version": 0,
-          "private": "bnVsbA==",
-          "dependencies": [
-            "aws_api_gateway_account.api_gateway_account_settings",
-            "aws_api_gateway_deployment.titanic_api_deployment",
-            "aws_api_gateway_integration.delete_sobreviventes_id_integration",
-            "aws_api_gateway_integration.get_sobreviventes_id_integration",
-            "aws_api_gateway_integration.get_sobreviventes_integration",
-            "aws_api_gateway_integration.post_sobreviventes_integration",
-            "aws_api_gateway_method.delete_sobreviventes_id",
-            "aws_api_gateway_method.get_sobreviventes",
-            "aws_api_gateway_method.get_sobreviventes_id",
-            "aws_api_gateway_method.post_sobreviventes",
-            "aws_api_gateway_resource.sobreviventes_id_resource",
-            "aws_api_gateway_resource.sobreviventes_resource",
-            "aws_api_gateway_rest_api.titanic_api",
-            "aws_cloudwatch_log_group.api_gateway_logs",
-            "aws_iam_role.api_gateway_cloudwatch_role",
-            "aws_iam_role.lambda_exec_role",
-            "aws_iam_role_policy_attachment.api_gateway_cloudwatch_policy",
-            "aws_lambda_function.titanic_survivors_lambda",
-            "aws_s3_bucket.lambda_code_bucket",
-            "data.archive_file.lambda_zip",
-            "random_string.bucket_suffix"
-          ]
         }
       ]
     },
@@ -767,33 +554,6 @@
     },
     {
       "mode": "managed",
-      "type": "aws_iam_role_policy_attachment",
-      "name": "lambda_s3_read_access",
-      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
-      "instances": [
-        {
-          "schema_version": 0,
-          "attributes": {
-            "id": "titanic-lambda-exec-role/arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess",
-            "policy_arn": "arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess",
-            "role": "titanic-lambda-exec-role"
-          },
-          "sensitive_attributes": [],
-          "identity_schema_version": 0,
-          "identity": {
-            "account_id": "654291821970",
-            "policy_arn": "arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess",
-            "role": "titanic-lambda-exec-role"
-          },
-          "private": "bnVsbA==",
-          "dependencies": [
-            "aws_iam_role.lambda_exec_role"
-          ]
-        }
-      ]
-    },
-    {
-      "mode": "managed",
       "type": "aws_lambda_function",
       "name": "titanic_survivors_lambda",
       "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
@@ -822,7 +582,7 @@
               }
             ],
             "file_system_config": [],
-            "filename": "",
+            "filename": "../lambda/lambda_function.zip",
             "function_name": "TitanicSurvivorsLambda",
             "handler": "lambda_function.lambda_handler",
             "id": "TitanicSurvivorsLambda",
@@ -830,7 +590,7 @@
             "image_uri": "",
             "invoke_arn": "arn:aws:apigateway:sa-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:sa-east-1:654291821970:function:TitanicSurvivorsLambda/invocations",
             "kms_key_arn": "",
-            "last_modified": "2025-07-13T23:23:10.177+0000",
+            "last_modified": "2025-07-13T21:59:37.000+0000",
             "layers": [],
             "logging_config": [
               {
@@ -850,25 +610,23 @@
             "replacement_security_group_ids": null,
             "reserved_concurrent_executions": -1,
             "role": "arn:aws:iam::654291821970:role/titanic-lambda-exec-role",
-            "runtime": "python3.8",
-            "s3_bucket": "",
-            "s3_key": "",
-            "s3_object_version": "",
+            "runtime": "python3.9",
+            "s3_bucket": null,
+            "s3_key": null,
+            "s3_object_version": null,
             "signing_job_arn": "",
             "signing_profile_version_arn": "",
             "skip_destroy": false,
             "snap_start": [],
-            "source_code_hash": "mhFngsEmmbeohcwDLznbZBDEeT0+RrFqV8HXnxrtx2s=",
+            "source_code_hash": "JhVin2giYT4Ghu4cf0I36yigcpzo/vT1AL0aWAjF0Og=",
             "source_code_size": 89719,
             "tags": {
               "Environment": "Dev",
-              "Project": "TitanicCase",
-              "manual_deploy_trigger": "v10"
+              "Project": "TitanicCase"
             },
             "tags_all": {
               "Environment": "Dev",
-              "Project": "TitanicCase",
-              "manual_deploy_trigger": "v10"
+              "Project": "TitanicCase"
             },
             "timeout": 30,
             "timeouts": null,
@@ -885,8 +643,7 @@
           "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6NjAwMDAwMDAwMDAwLCJ1cGRhdGUiOjYwMDAwMDAwMDAwMH19",
           "dependencies": [
             "aws_iam_role.lambda_exec_role",
-            "aws_s3_bucket.lambda_code_bucket",
-            "random_string.bucket_suffix"
+            "data.archive_file.lambda_zip"
           ],
           "create_before_destroy": true
         }
@@ -911,7 +668,7 @@
             "qualifier": "",
             "region": "sa-east-1",
             "source_account": null,
-            "source_arn": "arn:aws:execute-api:sa-east-1:654291821970:7kgcdqcq29/*/*",
+            "source_arn": "arn:aws:execute-api:sa-east-1:654291821970:gco5ep699d/*/*",
             "statement_id": "AllowAPIGatewayInvokeLambda",
             "statement_id_prefix": ""
           },
@@ -922,127 +679,8 @@
             "aws_api_gateway_rest_api.titanic_api",
             "aws_iam_role.lambda_exec_role",
             "aws_lambda_function.titanic_survivors_lambda",
-            "aws_s3_bucket.lambda_code_bucket",
-            "random_string.bucket_suffix"
+            "data.archive_file.lambda_zip"
           ]
-        }
-      ]
-    },
-    {
-      "mode": "managed",
-      "type": "aws_s3_bucket",
-      "name": "lambda_code_bucket",
-      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
-      "instances": [
-        {
-          "schema_version": 0,
-          "attributes": {
-            "acceleration_status": "",
-            "acl": null,
-            "arn": "arn:aws:s3:::titanic-lambda-code-t2d8xwn9",
-            "bucket": "titanic-lambda-code-t2d8xwn9",
-            "bucket_domain_name": "titanic-lambda-code-t2d8xwn9.s3.amazonaws.com",
-            "bucket_prefix": "",
-            "bucket_region": "sa-east-1",
-            "bucket_regional_domain_name": "titanic-lambda-code-t2d8xwn9.s3.sa-east-1.amazonaws.com",
-            "cors_rule": [],
-            "force_destroy": true,
-            "grant": [
-              {
-                "id": "147147d41f5e0d796a1e878aa454ce78259c9698b6e2261e76b3bc82cad05272",
-                "permissions": [
-                  "FULL_CONTROL"
-                ],
-                "type": "CanonicalUser",
-                "uri": ""
-              }
-            ],
-            "hosted_zone_id": "Z7KQH4QJS55SO",
-            "id": "titanic-lambda-code-t2d8xwn9",
-            "lifecycle_rule": [],
-            "logging": [],
-            "object_lock_configuration": [],
-            "object_lock_enabled": false,
-            "policy": "",
-            "region": "sa-east-1",
-            "replication_configuration": [],
-            "request_payer": "BucketOwner",
-            "server_side_encryption_configuration": [
-              {
-                "rule": [
-                  {
-                    "apply_server_side_encryption_by_default": [
-                      {
-                        "kms_master_key_id": "",
-                        "sse_algorithm": "AES256"
-                      }
-                    ],
-                    "bucket_key_enabled": false
-                  }
-                ]
-              }
-            ],
-            "tags": {
-              "Environment": "Dev",
-              "Project": "TitanicCase"
-            },
-            "tags_all": {
-              "Environment": "Dev",
-              "Project": "TitanicCase"
-            },
-            "timeouts": null,
-            "versioning": [
-              {
-                "enabled": false,
-                "mfa_delete": false
-              }
-            ],
-            "website": [],
-            "website_domain": null,
-            "website_endpoint": null
-          },
-          "sensitive_attributes": [],
-          "identity_schema_version": 0,
-          "identity": {
-            "account_id": "654291821970",
-            "bucket": "titanic-lambda-code-t2d8xwn9",
-            "region": "sa-east-1"
-          },
-          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjM2MDAwMDAwMDAwMDAsInJlYWQiOjEyMDAwMDAwMDAwMDAsInVwZGF0ZSI6MTIwMDAwMDAwMDAwMH19",
-          "dependencies": [
-            "random_string.bucket_suffix"
-          ],
-          "create_before_destroy": true
-        }
-      ]
-    },
-    {
-      "mode": "managed",
-      "type": "random_string",
-      "name": "bucket_suffix",
-      "provider": "provider[\"registry.terraform.io/hashicorp/random\"]",
-      "instances": [
-        {
-          "schema_version": 2,
-          "attributes": {
-            "id": "t2d8xwn9",
-            "keepers": null,
-            "length": 8,
-            "lower": true,
-            "min_lower": 0,
-            "min_numeric": 0,
-            "min_special": 0,
-            "min_upper": 0,
-            "number": true,
-            "numeric": true,
-            "override_special": null,
-            "result": "t2d8xwn9",
-            "special": false,
-            "upper": false
-          },
-          "sensitive_attributes": [],
-          "identity_schema_version": 0,
-          "create_before_destroy": true
         }
       ]
     }

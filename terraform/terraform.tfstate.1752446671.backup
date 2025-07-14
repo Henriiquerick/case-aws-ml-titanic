@@ -1,0 +1,479 @@
+{
+  "version": 4,
+  "terraform_version": "1.12.2",
+  "serial": 86,
+  "lineage": "d521b1e8-e3b9-860d-cd4d-0d7cfd654b3a",
+  "outputs": {},
+  "resources": [
+    {
+      "mode": "data",
+      "type": "archive_file",
+      "name": "lambda_zip",
+      "provider": "provider[\"registry.terraform.io/hashicorp/archive\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "exclude_symlink_directories": null,
+            "excludes": null,
+            "id": "06428a071712d6ecc842a57032e6b3ca07237d11",
+            "output_base64sha256": "JhVin2giYT4Ghu4cf0I36yigcpzo/vT1AL0aWAjF0Og=",
+            "output_base64sha512": "PZCzfBjHiRdRLRM8xQk/tPBbKovs9VDx3XxCM7AKzP7ezr/WhrAQtDnoBEqQe/TluB4LWxtPRIA2W6g22Zi8MA==",
+            "output_file_mode": null,
+            "output_md5": "833279eb3d60ab49bcef94f01bf51902",
+            "output_path": "../lambda/lambda_function.zip",
+            "output_sha": "06428a071712d6ecc842a57032e6b3ca07237d11",
+            "output_sha256": "2615629f6822613e0686ee1c7f4237eb28a0729ce8fef4f500bd1a5808c5d0e8",
+            "output_sha512": "3d90b37c18c78917512d133cc5093fb4f05b2a8becf550f1dd7c4233b00accfedecebfd686b010b439e8044a907bf4e5b81e0b5b1b4f4480365ba836d998bc30",
+            "output_size": 89719,
+            "source": [],
+            "source_content": null,
+            "source_content_filename": null,
+            "source_dir": "../lambda/",
+            "source_file": null,
+            "type": "zip"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_api_gateway_account",
+      "name": "api_gateway_account_settings",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "api_key_version": "4",
+            "cloudwatch_role_arn": "arn:aws:iam::654291821970:role/APIGatewayCloudWatchLogsRole",
+            "features": [
+              "UsagePlans"
+            ],
+            "id": "654291821970",
+            "region": "sa-east-1",
+            "throttle_settings": [
+              {
+                "burst_limit": 5000,
+                "rate_limit": 10000
+              }
+            ]
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "dependencies": [
+            "aws_iam_role.api_gateway_cloudwatch_role",
+            "aws_iam_role_policy_attachment.api_gateway_cloudwatch_policy"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_api_gateway_resource",
+      "name": "sobreviventes_resource",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "rbwtop",
+            "parent_id": "h4uih6m5of",
+            "path": "/sobreviventes",
+            "path_part": "sobreviventes",
+            "region": "sa-east-1",
+            "rest_api_id": "gco5ep699d"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_api_gateway_rest_api.titanic_api"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_api_gateway_rest_api",
+      "name": "titanic_api",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "api_key_source": "HEADER",
+            "arn": "arn:aws:apigateway:sa-east-1::/restapis/gco5ep699d",
+            "binary_media_types": [],
+            "body": null,
+            "created_date": "2025-07-13T19:58:44Z",
+            "description": "API para prever sobreviventes do Titanic",
+            "disable_execute_api_endpoint": false,
+            "endpoint_configuration": [
+              {
+                "ip_address_type": "ipv4",
+                "types": [
+                  "EDGE"
+                ],
+                "vpc_endpoint_ids": []
+              }
+            ],
+            "execution_arn": "arn:aws:execute-api:sa-east-1:654291821970:gco5ep699d",
+            "fail_on_warnings": null,
+            "id": "gco5ep699d",
+            "minimum_compression_size": "",
+            "name": "TitanicSurvivorsAPI",
+            "parameters": null,
+            "policy": "",
+            "put_rest_api_mode": null,
+            "region": "sa-east-1",
+            "root_resource_id": "h4uih6m5of",
+            "tags": {
+              "Environment": "Dev",
+              "Project": "TitanicCase"
+            },
+            "tags_all": {
+              "Environment": "Dev",
+              "Project": "TitanicCase"
+            }
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_cloudwatch_log_group",
+      "name": "api_gateway_logs",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:logs:sa-east-1:654291821970:log-group:/aws/apigateway/TitanicSurvivorsAPI/dev",
+            "id": "/aws/apigateway/TitanicSurvivorsAPI/dev",
+            "kms_key_id": "",
+            "log_group_class": "STANDARD",
+            "name": "/aws/apigateway/TitanicSurvivorsAPI/dev",
+            "name_prefix": "",
+            "region": "sa-east-1",
+            "retention_in_days": 7,
+            "skip_destroy": false,
+            "tags": {},
+            "tags_all": {}
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_api_gateway_rest_api.titanic_api"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_iam_role",
+      "name": "api_gateway_cloudwatch_role",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::654291821970:role/APIGatewayCloudWatchLogsRole",
+            "assume_role_policy": "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"apigateway.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+            "create_date": "2025-07-13T21:03:12Z",
+            "description": "",
+            "force_detach_policies": false,
+            "id": "APIGatewayCloudWatchLogsRole",
+            "inline_policy": [],
+            "managed_policy_arns": [
+              "arn:aws:iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs"
+            ],
+            "max_session_duration": 3600,
+            "name": "APIGatewayCloudWatchLogsRole",
+            "name_prefix": "",
+            "path": "/",
+            "permissions_boundary": "",
+            "tags": {},
+            "tags_all": {},
+            "unique_id": "AROAZQVWU4WJO5ZDLE6IS"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "account_id": "654291821970",
+            "name": "APIGatewayCloudWatchLogsRole"
+          },
+          "private": "bnVsbA=="
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_iam_role",
+      "name": "lambda_exec_role",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::654291821970:role/titanic-lambda-exec-role",
+            "assume_role_policy": "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"lambda.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+            "create_date": "2025-07-13T20:49:49Z",
+            "description": "",
+            "force_detach_policies": false,
+            "id": "titanic-lambda-exec-role",
+            "inline_policy": [],
+            "managed_policy_arns": [
+              "arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess",
+              "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+            ],
+            "max_session_duration": 3600,
+            "name": "titanic-lambda-exec-role",
+            "name_prefix": "",
+            "path": "/",
+            "permissions_boundary": "",
+            "tags": {
+              "Environment": "Dev",
+              "Project": "TitanicCase"
+            },
+            "tags_all": {
+              "Environment": "Dev",
+              "Project": "TitanicCase"
+            },
+            "unique_id": "AROAZQVWU4WJDDPWTY6LK"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "account_id": "654291821970",
+            "name": "titanic-lambda-exec-role"
+          },
+          "private": "bnVsbA==",
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_iam_role_policy_attachment",
+      "name": "api_gateway_cloudwatch_policy",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "APIGatewayCloudWatchLogsRole/arn:aws:iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs",
+            "policy_arn": "arn:aws:iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs",
+            "role": "APIGatewayCloudWatchLogsRole"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "account_id": "654291821970",
+            "policy_arn": "arn:aws:iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs",
+            "role": "APIGatewayCloudWatchLogsRole"
+          },
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_iam_role.api_gateway_cloudwatch_role"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_iam_role_policy_attachment",
+      "name": "lambda_basic_execution",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "titanic-lambda-exec-role/arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+            "policy_arn": "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+            "role": "titanic-lambda-exec-role"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "account_id": "654291821970",
+            "policy_arn": "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+            "role": "titanic-lambda-exec-role"
+          },
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_iam_role.lambda_exec_role"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_iam_role_policy_attachment",
+      "name": "lambda_dynamodb_access",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "titanic-lambda-exec-role/arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess",
+            "policy_arn": "arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess",
+            "role": "titanic-lambda-exec-role"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "account_id": "654291821970",
+            "policy_arn": "arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess",
+            "role": "titanic-lambda-exec-role"
+          },
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_iam_role.lambda_exec_role"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_lambda_function",
+      "name": "titanic_survivors_lambda",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "architectures": [
+              "x86_64"
+            ],
+            "arn": "arn:aws:lambda:sa-east-1:654291821970:function:TitanicSurvivorsLambda",
+            "code_sha256": "JhVin2giYT4Ghu4cf0I36yigcpzo/vT1AL0aWAjF0Og=",
+            "code_signing_config_arn": "",
+            "dead_letter_config": [],
+            "description": "",
+            "environment": [
+              {
+                "variables": {
+                  "DYNAMODB_TABLE_NAME": "TitanicSurvivors"
+                }
+              }
+            ],
+            "ephemeral_storage": [
+              {
+                "size": 512
+              }
+            ],
+            "file_system_config": [],
+            "filename": "../lambda/lambda_function.zip",
+            "function_name": "TitanicSurvivorsLambda",
+            "handler": "lambda_function.lambda_handler",
+            "id": "TitanicSurvivorsLambda",
+            "image_config": [],
+            "image_uri": "",
+            "invoke_arn": "arn:aws:apigateway:sa-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:sa-east-1:654291821970:function:TitanicSurvivorsLambda/invocations",
+            "kms_key_arn": "",
+            "last_modified": "2025-07-13T21:59:37.000+0000",
+            "layers": [],
+            "logging_config": [
+              {
+                "application_log_level": "",
+                "log_format": "Text",
+                "log_group": "/aws/lambda/TitanicSurvivorsLambda",
+                "system_log_level": ""
+              }
+            ],
+            "memory_size": 256,
+            "package_type": "Zip",
+            "publish": false,
+            "qualified_arn": "arn:aws:lambda:sa-east-1:654291821970:function:TitanicSurvivorsLambda:$LATEST",
+            "qualified_invoke_arn": "arn:aws:apigateway:sa-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:sa-east-1:654291821970:function:TitanicSurvivorsLambda:$LATEST/invocations",
+            "region": "sa-east-1",
+            "replace_security_groups_on_destroy": null,
+            "replacement_security_group_ids": null,
+            "reserved_concurrent_executions": -1,
+            "role": "arn:aws:iam::654291821970:role/titanic-lambda-exec-role",
+            "runtime": "python3.9",
+            "s3_bucket": null,
+            "s3_key": null,
+            "s3_object_version": null,
+            "signing_job_arn": "",
+            "signing_profile_version_arn": "",
+            "skip_destroy": false,
+            "snap_start": [],
+            "source_code_hash": "JhVin2giYT4Ghu4cf0I36yigcpzo/vT1AL0aWAjF0Og=",
+            "source_code_size": 89719,
+            "tags": {
+              "Environment": "Dev",
+              "Project": "TitanicCase"
+            },
+            "tags_all": {
+              "Environment": "Dev",
+              "Project": "TitanicCase"
+            },
+            "timeout": 30,
+            "timeouts": null,
+            "tracing_config": [
+              {
+                "mode": "PassThrough"
+              }
+            ],
+            "version": "$LATEST",
+            "vpc_config": []
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6NjAwMDAwMDAwMDAwLCJ1cGRhdGUiOjYwMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "aws_iam_role.lambda_exec_role",
+            "data.archive_file.lambda_zip"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_lambda_permission",
+      "name": "apigw_lambda_permission",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "action": "lambda:InvokeFunction",
+            "event_source_token": null,
+            "function_name": "TitanicSurvivorsLambda",
+            "function_url_auth_type": null,
+            "id": "AllowAPIGatewayInvokeLambda",
+            "principal": "apigateway.amazonaws.com",
+            "principal_org_id": null,
+            "qualifier": "",
+            "region": "sa-east-1",
+            "source_account": null,
+            "source_arn": "arn:aws:execute-api:sa-east-1:654291821970:gco5ep699d/*/*",
+            "statement_id": "AllowAPIGatewayInvokeLambda",
+            "statement_id_prefix": ""
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_api_gateway_rest_api.titanic_api",
+            "aws_iam_role.lambda_exec_role",
+            "aws_lambda_function.titanic_survivors_lambda",
+            "data.archive_file.lambda_zip"
+          ]
+        }
+      ]
+    }
+  ],
+  "check_results": null
+}
