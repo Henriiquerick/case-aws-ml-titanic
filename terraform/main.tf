@@ -57,7 +57,6 @@ resource "aws_iam_role_policy_attachment" "api_gateway_cloudwatch_policy" {
 }
 
 # --- Adiciona a configuração de logs da conta API Gateway ---
-# Essa configuração é global para a conta AWS na região, não específica da API
 resource "aws_api_gateway_account" "api_gateway_account_settings" {
   cloudwatch_role_arn = aws_iam_role.api_gateway_cloudwatch_role.arn
 
@@ -96,7 +95,7 @@ resource "aws_iam_role_policy_attachment" "lambda_basic_execution" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole" # Permite logs no CloudWatch
 }
 
-# Se você for habilitar o DynamoDB no futuro, essa permissão será necessária
+#habilitar o DynamoDB no futuro
 resource "aws_iam_role_policy_attachment" "lambda_dynamodb_access" {
   role       = aws_iam_role.lambda_exec_role.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess" # Acesso total ao DynamoDB para o case (em prod, seria mais restrito)
@@ -287,7 +286,7 @@ resource "aws_api_gateway_stage" "titanic_api_stage" {
   rest_api_id   = aws_api_gateway_rest_api.titanic_api.id
   stage_name    = "dev"
 
-  # Adiciona dependência explícita para a configuração de conta do API Gateway
+  # Adiciona dependência para a configuração de conta do API Gateway
   depends_on = [
     aws_api_gateway_account.api_gateway_account_settings
   ]
