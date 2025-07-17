@@ -106,16 +106,12 @@ resource "aws_iam_role_policy_attachment" "lambda_dynamodb_access" {
 resource "aws_lambda_function" "titanic_survivors_lambda" {
   function_name    = "TitanicSurvivorsLambda"
   handler          = "lambda_function.lambda_handler"
-  runtime          = "python3.8" # Manter python3.8
+  runtime          = "python3.8" # CONFIRMADO: Python 3.8 para estabilidade com libs científicas
   role             = aws_iam_role.lambda_exec_role.arn
 
-  # Código da Lambda via S3
-  s3_bucket        = aws_s3_bucket.lambda_code_bucket.id # O bucket S3 que acabamos de criar
-  s3_key           = "lambda_function.zip" # O nome do arquivo ZIP dentro do bucket
-
-  # Remova as linhas 'filename' e 'source_code_hash' se existirem aqui!
-  # filename         = "../lambda/lambda_function.zip" 
-  # source_code_hash = filebase64sha256("../lambda/lambda_function.zip") 
+  # Código da Lambda via S3 - Este é o caminho correto e limpo!
+  s3_bucket        = aws_s3_bucket.lambda_code_bucket.id 
+  s3_key           = "lambda_function.zip" 
 
   environment {
     variables = {
@@ -123,13 +119,13 @@ resource "aws_lambda_function" "titanic_survivors_lambda" {
     }
   }
 
-  timeout     = 30
+  timeout     = 30 
   memory_size = 256
 
   tags = {
     Project     = "TitanicCase"
     Environment = "Dev"
-    manual_deploy_trigger = "v10" # Mude para um NOVO valor (ex: "v10")
+    manual_deploy_trigger = "v17" # Mude para um NOVO valor (ex: "v17")
   }
 }
 
@@ -275,7 +271,7 @@ resource "aws_api_gateway_deployment" "titanic_api_deployment" {
       aws_api_gateway_integration.get_sobreviventes_id_integration.id,
       aws_api_gateway_integration.delete_sobreviventes_id_integration.id
     ]))
-    manual_deploy_trigger = "v4" # Mude para um NOVO valor para forçar o deploy (ex: "v5")
+    manual_deploy_trigger = "v7"
   }
 }
 
